@@ -1,8 +1,8 @@
 import torch.nn as nn
 
 class IConvexOne(nn.Module):
-    def _init_(self, num_classes=4):
-        super(IConvexOne, self)._init_()
+    def __init__(self, num_classes=4):
+        super(IConvexOne, self).__init__()
         self.features = nn.Sequential(
             nn.Conv2d(3, 32, kernel_size=3, padding=1),
             nn.ReLU(),

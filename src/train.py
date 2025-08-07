@@ -7,7 +7,6 @@ from model import IConvexOne
 
 BATCH_SIZE = 64
 EPOCHS = 20
-NUM_CLASSES = 4
 LR = 1e-3
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -18,15 +17,15 @@ transform = transforms.Compose([
     transforms.Normalize([0.5]*3, [0.5]*3)
 ])
 
-train_data = datasets.ImageFolder("src/dataset/train", transform=transform)
-val_data   = datasets.ImageFolder("src/dataset/val", transform=transform)
+train_data = datasets.ImageFolder("dataset/train", transform=transform)
+val_data   = datasets.ImageFolder("dataset/val", transform=transform)
 
 train_loader = DataLoader(train_data, batch_size=BATCH_SIZE, shuffle=True)
 val_loader   = DataLoader(val_data, batch_size=BATCH_SIZE)
 
-model = IConvexOne(num_classes=NUM_CLASSES).to(DEVICE)
+model = IConvexOne().to(DEVICE)
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=LR)
+optimizer = optim.Adam([p for p in model.parameters() if p.requires_grad], lr=LR)
 
 for epoch in range(EPOCHS):
     model.train()
