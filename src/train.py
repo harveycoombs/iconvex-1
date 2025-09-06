@@ -5,10 +5,12 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from model import IConvexOne
 
-BATCH_SIZE = 64
+BATCH_SIZE = 32
 EPOCHS = 20
 LR = 1e-3
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+torch.cuda.empty_cache()
 
 transform = transforms.Compose([
     transforms.Resize((64, 64)),
