@@ -5,7 +5,7 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from model import IConvexOne
 
-BATCH_SIZE = 32
+BATCH_SIZE = 8
 EPOCHS = 20
 LR = 1e-3
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
