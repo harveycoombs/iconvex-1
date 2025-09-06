@@ -52,6 +52,7 @@ for epoch in range(EPOCHS):
             total += labels.size(0)
 
     print(f"Epoch [{epoch+1}/{EPOCHS}] Loss: {total_loss:.4f}  Val Acc: {100*correct/total:.2f}%")
+    torch.cuda.empty_cache()
 
 torch.save(model.state_dict(), "iconvexone.pth")
 print("Model saved")
