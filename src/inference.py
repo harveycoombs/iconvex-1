@@ -3,11 +3,11 @@ from torchvision import transforms
 from PIL import Image
 from model import IConvexOne
 
-model = IConvexOne(num_classes=4)
-model.load_state_dict(torch.load("iconvexone.pth", map_location="cpu"))
+model = IConvexOne(num_classes=20)
+model.load_state_dict(torch.load("iconvexone.pth", map_location="cpu"), strict=False)
 model.eval()
 
-classes = ["birds", "cats", "dogs", "humans"]
+classes = ["aeroplane", "bicycle", "bird", "boat", "book", "car", "cat", "computer", "crocodile", "dog", "flower", "guitar", "hamster", "house", "human", "mobile_phone", "motorcycle", "snake", "spider", "tree"]
 
 transform = transforms.Compose([
     transforms.Resize((64, 64)),
